@@ -24,9 +24,9 @@ XenoPulse is a modern customer engagement platform built with Next.js, Supabase,
 
 Before you get started, ensure you have:
 
-- Node.js 18+ and pnpm installed
+- Node.js 18+ installed
 - A Supabase project with API credentials
-- An Anthropic Claude API key
+- Gemini API keys (1-3 keys for quota rotation)
 
 ## Environment Setup
 
@@ -38,15 +38,11 @@ Create or update your environment variables in the Vercel project settings:
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-SUPABASE_URL=https://your-project.supabase.co
 
-# Anthropic
-ANTHROPIC_API_KEY=your-anthropic-api-key
-
-# Channel Service (Optional)
-CHANNEL_SERVICE_URL=http://localhost:3001
-CHANNEL_SERVICE_PORT=3001
+# Gemini AI (for message generation and AI features)
+GEMINI_API_KEY=your-first-gemini-api-key
+GEMINI_API_KEY_2=your-second-gemini-api-key (optional, for quota rotation)
+GEMINI_API_KEY_3=your-third-gemini-api-key (optional, for quota rotation)
 ```
 
 ### 2. Initialize the Database
@@ -59,33 +55,33 @@ The database schema will be automatically applied through Supabase migrations. T
 
 ### 3. Install Dependencies
 
+You can use either **npm** or **pnpm**:
+
+**Using npm:**
+```bash
+npm install
+```
+
+**Using pnpm:**
 ```bash
 pnpm install
 ```
 
 ## Running the Application
 
-### Option 1: Development Mode (Next.js only)
+### Development Mode
 
+**Using npm:**
+```bash
+npm run dev
+```
+
+**Using pnpm:**
 ```bash
 pnpm dev
 ```
 
 The Next.js app will run on `http://localhost:3000`
-
-### Option 2: With Channel Service (Recommended for testing analytics)
-
-In one terminal:
-```bash
-pnpm dev
-```
-
-In another terminal:
-```bash
-pnpm run channel-service
-```
-
-The channel service will run on `http://localhost:3001` (or your specified PORT)
 
 ## First Steps
 
