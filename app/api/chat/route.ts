@@ -52,7 +52,8 @@ async function callGemini(prompt: string, systemInstruction?: string): Promise<s
             return text
           }
         }
-        // try next
+      } catch (e) {
+        // Network error or parsing error, try next model
       }
     }
   }
