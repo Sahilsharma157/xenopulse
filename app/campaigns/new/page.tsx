@@ -1,12 +1,13 @@
 'use client'
 
+import { Suspense } from 'react'
 import { MainLayout } from '@/components/layout'
 import { Button } from '@/components/ui/button'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { ArrowLeft } from 'lucide-react'
 
-export default function NewCampaignPage() {
+function NewCampaignContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -317,5 +318,13 @@ export default function NewCampaignPage() {
         )}
       </div>
     </MainLayout>
+  )
+}
+
+export default function NewCampaignPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NewCampaignContent />
+    </Suspense>
   )
 }
